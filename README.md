@@ -44,6 +44,8 @@ Saved data will persist in keychain even after application is deleted or device 
 # To-do
 
 * Option to clear keychain data if app is uninstalled. [Might help?](https://developer.apple.com/forums/thread/36442)
+* Check if podspec requires linking to `Security` framework
+* Add description of library to  repo page and podspec
 
 # License
 
