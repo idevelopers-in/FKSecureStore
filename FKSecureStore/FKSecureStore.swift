@@ -26,7 +26,7 @@ import Security
 
 private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
 
-@objc class FKSecureStore: NSObject
+@objc public class FKSecureStore: NSObject
 {
     @objc public enum Status: Int
     {
