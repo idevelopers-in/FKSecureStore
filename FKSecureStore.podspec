@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage      = 'https://github.com/idevelopers-in/FKSecureStore'
   s.authors       = { 'Firoz Khan' => 'f90khan@gmail.com' }
   s.summary       = ''
-  s.source        = { :git => 'https://github.com/idevelopers-in/FKSecureStore', :tag => s.version }
+  s.source        = { :git => 'https://github.com/idevelopers-in/FKSecureStore.git', :tag => s.version }
   s.source_files  = 'FKSecureStore/*.{swift}'
   s.requires_arc  = true
 end
