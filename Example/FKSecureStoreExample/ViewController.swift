@@ -31,9 +31,16 @@ class ViewController: UIViewController {
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: user, requiringSecureCoding: false)
             
-            if FKSecureStore.save(data: data, key: keychainDataKey) {
-                showAlert(message: "Credentials saved to keychain successfully")
-                clearFields()
+            switch FKSecureStore.save(data: data, key: keychainDataKey) {
+                    
+                case .success:
+                    showAlert(message: "Credentials saved to keychain successfully")
+                    clearFields()
+                    break
+                    
+                default:
+                    showAlert(message: "Unable to store credentials in keychain")
+                    break
             }
         }
         catch {
@@ -68,8 +75,8 @@ class ViewController: UIViewController {
     
     @IBAction func deleteTapped(_ sender: Any) {
         
-        switch FKSecureStore.delete(key: keychainDataKey)
-        {
+        switch FKSecureStore.delete(key: keychainDataKey) {
+                
             case .success:
                 showAlert(message: "Data deleted from keychain successfully")
                 clearFields()
@@ -87,10 +94,9 @@ class ViewController: UIViewController {
     
     @IBAction func clearTapped(_ sender: Any) {
         
-        switch FKSecureStore.clear()
-        {
-            case .success:
+        switch FKSecureStore.clear() {
                 
+            case .success:
                 showAlert(message: "Data cleared from keychain successfully")
                 clearFields()
                 break

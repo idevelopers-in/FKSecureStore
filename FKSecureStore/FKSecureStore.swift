@@ -62,15 +62,15 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - string: The string to be saved.
      - key: The key for which the string should be saved.
      
-     - Returns: A `Bool` for the status of the operation.
+     - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func save(string: String, key: String) -> Bool {
+    @objc class func save(string: String, key: String) -> Status {
         
         if let stringData = string.data(using: .utf8, allowLossyConversion: false) {
             return save(data: stringData, key: key)
         }
-        return false
+        return Status.other
     }
     
     /**
@@ -80,10 +80,10 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - data: The data to be saved.
      - key:  The key for which the data should be saved.
      
-     - Returns: A `Bool` for the status of the operation.
+     - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func save(data: Data, key: String) -> Bool {
+    @objc class func save(data: Data, key: String) -> Status {
         
         let query: [String: Any] = [
             String(kSecClass): kSecClassKey,
@@ -94,8 +94,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
         SecItemDelete(query as CFDictionary)
         var result: CFTypeRef? = nil
         let status = SecItemAdd(query as CFDictionary, &result)
-        
-        return status == noErr
+        return Status(from: status)
     }
     
     // MARK: - Load Functions
