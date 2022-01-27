@@ -8,5 +8,6 @@ Pod::Spec.new do |s|
   s.summary       = 'A lightweight solution to interact with the keychain'
   s.source        = { :git => 'https://github.com/idevelopers-in/FKSecureStore.git', :tag => s.version }
   s.source_files  = 'FKSecureStore/*.{swift}'
+  s.frameworks    = 'Security'
   s.requires_arc  = true
 end
