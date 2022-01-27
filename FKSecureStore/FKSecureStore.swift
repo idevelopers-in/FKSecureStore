@@ -28,7 +28,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
 
 @objc class FKSecureStore: NSObject
 {
-    @objc enum Status: Int
+    @objc public enum Status: Int
     {
         case success
         case noData
@@ -65,7 +65,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func save(string: String, key: String) -> Status {
+    @objc public class func save(string: String, key: String) -> Status {
         
         if let stringData = string.data(using: .utf8, allowLossyConversion: false) {
             return save(data: stringData, key: key)
@@ -83,7 +83,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func save(data: Data, key: String) -> Status {
+    @objc public class func save(data: Data, key: String) -> Status {
         
         let query: [String: Any] = [
             String(kSecClass): kSecClassKey,
@@ -106,7 +106,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      
      - Returns: An optional `String` object.
      */
-    @objc class func load(key: String) -> String? {
+    @objc public class func load(key: String) -> String? {
         
         if let data = load(dataForKey: key){
             return String(data: data, encoding: .utf8)
@@ -121,7 +121,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      
      - Returns: An optional `Data` object.
      */
-    @objc class func load(dataForKey key: String) -> Data? {
+    @objc public class func load(dataForKey key: String) -> Data? {
         
         let query = [
             String(kSecClass): kSecClassKey,
@@ -146,7 +146,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func delete(key: String) -> Status {
+    @objc public class func delete(key: String) -> Status {
         
         let query = [
             String(kSecClass): kSecClassKey,
@@ -163,7 +163,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func clear() -> Status {
+    @objc public class func clear() -> Status {
         
         let query = [
             String(kSecClass): kSecClassKey,
