@@ -38,8 +38,7 @@ Delete any saved data for a particular key in the keychain.
 ```
 Delete all saved data for the app in the keychain. All data for any key you might have saved will be deleted.
 
-#### Note
-Saved data will persist in keychain even after application is deleted or device is restarted.
+**Note:** Saved data will persist in keychain even after application is deleted or device is restarted.
 
 # To-do
 
