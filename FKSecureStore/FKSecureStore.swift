@@ -59,8 +59,8 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      Save any `String` for a particular key inside the keychain.
      
      - Parameters:
-     - string: The string to be saved.
-     - key: The key for which the string should be saved.
+        - string: The string to be saved.
+        - key: The key for which the string should be saved.
      
      - Returns: An enum containing the status of the operation.
      */
@@ -77,8 +77,8 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      Save any `Data` for a particular key inside the keychain.
      
      - Parameters:
-     - data: The data to be saved.
-     - key:  The key for which the data should be saved.
+        - data: The data to be saved.
+        - key:  The key for which the data should be saved.
      
      - Returns: An enum containing the status of the operation.
      */
@@ -102,10 +102,12 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
     /**
      Retrieve any saved `String` for a particular key inside the keychain.
      
-     - Parameter key: The key for which the `String` should be retrieved.
+     - Parameters:
+        - key: The key for which the `String` should be retrieved.
      
      - Returns: An optional `String` object.
      */
+    @discardableResult
     @objc public class func load(key: String) -> String? {
         
         if let data = load(dataForKey: key){
@@ -117,10 +119,12 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
     /**
      Retrieve any saved `Data` for a particular key inside the keychain.
      
-     - Parameter key: The key for which the `Data` should be retrieved.
+     - Parameters:
+        - key: The key for which the `Data` should be retrieved.
      
      - Returns: An optional `Data` object.
      */
+    @discardableResult
     @objc public class func load(dataForKey key: String) -> Data? {
         
         let query = [
@@ -141,7 +145,8 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
     /**
      Delete stored data for a particular key inside the keychain.
      
-     - Parameter key: The key for which the data should be deleted.
+     - Parameters:
+        - key: The key for which the data should be deleted.
      
      - Returns: An enum containing the status of the operation.
      */
