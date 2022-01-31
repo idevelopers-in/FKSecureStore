@@ -26,9 +26,9 @@ import Security
 
 private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
 
-@objc class FKSecureStore: NSObject
+@objc public class FKSecureStore: NSObject
 {
-    @objc enum Status: Int
+    @objc public enum Status: Int
     {
         case success
         case noData
@@ -59,13 +59,13 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      Save any `String` for a particular key inside the keychain.
      
      - Parameters:
-     - string: The string to be saved.
-     - key: The key for which the string should be saved.
+        - string: The string to be saved.
+        - key: The key for which the string should be saved.
      
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func save(string: String, key: String) -> Status {
+    @objc public class func save(string: String, key: String) -> Status {
         
         if let stringData = string.data(using: .utf8, allowLossyConversion: false) {
             return save(data: stringData, key: key)
@@ -77,13 +77,13 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      Save any `Data` for a particular key inside the keychain.
      
      - Parameters:
-     - data: The data to be saved.
-     - key:  The key for which the data should be saved.
+        - data: The data to be saved.
+        - key:  The key for which the data should be saved.
      
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func save(data: Data, key: String) -> Status {
+    @objc public class func save(data: Data, key: String) -> Status {
         
         let query: [String: Any] = [
             String(kSecClass): kSecClassKey,
@@ -102,11 +102,13 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
     /**
      Retrieve any saved `String` for a particular key inside the keychain.
      
-     - Parameter key: The key for which the `String` should be retrieved.
+     - Parameters:
+        - key: The key for which the `String` should be retrieved.
      
      - Returns: An optional `String` object.
      */
-    @objc class func load(key: String) -> String? {
+    @discardableResult
+    @objc public class func load(key: String) -> String? {
         
         if let data = load(dataForKey: key){
             return String(data: data, encoding: .utf8)
@@ -117,11 +119,13 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
     /**
      Retrieve any saved `Data` for a particular key inside the keychain.
      
-     - Parameter key: The key for which the `Data` should be retrieved.
+     - Parameters:
+        - key: The key for which the `Data` should be retrieved.
      
      - Returns: An optional `Data` object.
      */
-    @objc class func load(dataForKey key: String) -> Data? {
+    @discardableResult
+    @objc public class func load(dataForKey key: String) -> Data? {
         
         let query = [
             String(kSecClass): kSecClassKey,
@@ -141,12 +145,13 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
     /**
      Delete stored data for a particular key inside the keychain.
      
-     - Parameter key: The key for which the data should be deleted.
+     - Parameters:
+        - key: The key for which the data should be deleted.
      
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func delete(key: String) -> Status {
+    @objc public class func delete(key: String) -> Status {
         
         let query = [
             String(kSecClass): kSecClassKey,
@@ -163,7 +168,7 @@ private let kSecureKeyPrefix = Bundle.main.bundleIdentifier! + ".FKSecureStore."
      - Returns: An enum containing the status of the operation.
      */
     @discardableResult
-    @objc class func clear() -> Status {
+    @objc public class func clear() -> Status {
         
         let query = [
             String(kSecClass): kSecClassKey,

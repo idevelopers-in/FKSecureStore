@@ -38,12 +38,13 @@ Delete any saved data for a particular key in the keychain.
 ```
 Delete all saved data for the app in the keychain. All data for any key you might have saved will be deleted.
 
-#### Note
-Saved data will persist in keychain even after application is deleted or device is restarted.
+**Note:** Saved data will persist in keychain even after application is deleted or device is restarted.
 
 # To-do
 
 * Option to clear keychain data if app is uninstalled. [Might help?](https://developer.apple.com/forums/thread/36442)
+* ~~Check if podspec requires linking to `Security` framework~~
+* ~~Add description of library to repo page and podspec~~
 
 # License
 
