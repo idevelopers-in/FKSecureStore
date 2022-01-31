@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.license       = { :type => 'MIT' }
   s.homepage      = 'https://github.com/idevelopers-in/FKSecureStore'
   s.authors       = { 'Firoz Khan' => 'f90khan@gmail.com' }
-  s.summary       = 'A lightweight solution to interact with the keychain'
+  s.summary       = 'A helper for keeping data secured in the keychain'
   s.source        = { :git => 'https://github.com/idevelopers-in/FKSecureStore.git', :tag => s.version }
   s.source_files  = 'FKSecureStore/*.{swift}'
   s.frameworks    = 'Security'
